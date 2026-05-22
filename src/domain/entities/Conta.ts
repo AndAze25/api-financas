@@ -3,8 +3,11 @@ import {
     PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    ManyToOne,
+    JoinColumn
 } from "typeorm";
+import { Categoria } from "./Categoria";
 
 @Entity("contas")
 export class Conta {
@@ -35,4 +38,8 @@ export class Conta {
 
     @UpdateDateColumn()
     atualizadoEm!: Date;
+
+    @ManyToOne(() => Categoria, categoria => categoria.contas)
+    @JoinColumn({ name: 'categoriaId' }) //Foreign key
+    categoria!: Categoria;
 }

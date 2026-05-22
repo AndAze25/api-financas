@@ -1,8 +1,9 @@
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
 import { Conta } from "../../domain/entities/Conta";
+import { Categoria } from "../../domain/entities/Categoria";
 
-dotenv.config()
+dotenv.config();
 
 //Função para retornar a conexão com o banco de dados
 export const AppDataSource = new DataSource({
@@ -15,6 +16,7 @@ export const AppDataSource = new DataSource({
     synchronize : true,
     logging : true,
     entities: [
-        Conta
+        Conta,
+        Categoria
     ]
 });
